@@ -1,0 +1,35 @@
+<nav class="navbar navbar-dark nav-custom-dark">
+  <div class="container">
+    <span class="h1 " class="navbar-brand mb-0 custom-h1">Material Todo app using Firestore</span>
+  </div>
+</nav>
+<div class="container custom-container">
+  <div class="row">
+    <div class="col-md-4">
+      <form>
+        <input type="text" [(ngModel)]="todoTitleInput" name="todoTask" id="newTodo" class="form-control custom-input" placeholder="Write task title...">
+        <input type="text" [(ngModel)]="todoDescInput" name="todoDesc" id="newTodoDesc" class="form-control custom-input" placeholder="Write task description...">
+        <button *ngIf="!editing" (click)="addTodo(todoTitleInput,todoDescInput)" class="btn btn-outline-success btn-lg btn-block" type="button">Add</button>
+
+        <button *ngIf="editing" (click)="updateTodo(editingTodo,todoTitleInput,todoDescInput)" class="btn btn-outline-primary btn-lg btn-block" type="button">Submit Changes</button>
+
+      </form>
+    </div>
+    <div class="col-lg-6">
+      <div class="container">
+        <div *ngIf="todo$">
+          <div (click)="editMenuOpen  = !editMenuOpen" class="card custom-card" *ngFor="let todo of todo$ | async" style="width: 100%;">
+            <div class="card-body">
+              <h4 class="card-title">{{todo.task}}</h4>
+              <p class="card-text">{{todo.description}}</p>
+              <p class="card-text"><small class="text-muted">{{todo.date | date : 'mediumDate'}} at {{todo.date | date : 'shortTime'}}</small></p>
+              <button *ngIf="editMenuOpen" (click)="deleteTodo(todo)" class="btn btn-outline-danger">Delete</button>
+              <button *ngIf="editMenuOpen" (click)="editTodo(todo)" class="btn btn-outline-info">Edit</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>

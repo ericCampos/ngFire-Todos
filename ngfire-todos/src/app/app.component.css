@@ -1,0 +1,25 @@
+.custom-container {
+    margin-top: 70px;
+}
+
+.custom-card {
+    background: #4E5D6B;
+    color: #EBEBEB;
+    margin: 1px;
+}
+
+.custom-input {
+    margin: 10px 0px 40px 0px;
+    color: white;
+    background-image: linear-gradient(0deg, #4E5D6B 2px, rgba(0, 150, 136, 0) 0), linear-gradient(0deg, rgba(0, 0, 0, .26) 1px, transparent 0);
+
+}
+
+.custom-input::placeholder {
+    color: #849198;
+
+}
+
+.custom-h1 {
+    font-size: 1.6em;
+}
